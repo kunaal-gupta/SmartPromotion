@@ -1,0 +1,18 @@
+{
+  "name": "SmartHR",
+  "version": "1.0.0",
+  "description": "Smart Hiring using Ethereum blockchain",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kunaalgupta@hotmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  }
+}
