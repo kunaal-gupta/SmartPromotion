@@ -17,21 +17,38 @@ contract Hiring {
         uint ProjCompTime;
     }
 
-    mapping (uint => User) Users;
-    mapping (uint => Achievement) Achievements;
+    
+    mapping (uint => User) public Users;
+    mapping (uint => Achievement) public Achievements;
 
-    uint UserId = 1;
+    event UserCreated(
+        uint UserId,
+        string Name
+    );
+
+    event UserAchievCreated(
+        uint AchievId,
+        string ProjName,
+        uint achValue
+    );
+
+    constructor() public {
+        createUser('UserName', 'UserTitle', 0);
+    }
+
+    uint public UserId = 0;
     function createUser(string memory Name, string memory Title, uint Salary) public {
-        Users[UserId] = User(Name, Title, Salary);
         UserId++;
+        Users[UserId] = User(Name, Title, Salary);
+        emit UserCreated(UserId, Name);
     }
 
-    uint AchievId = 1;
+    uint public AchievId = 0;
     function CreateUserAchiev(string memory achName, string memory ProjName, uint achValue, uint ProjAllocatedTime, uint ProjCompTime) public {
-        Achievements[AchievId] = Achievement(achName, ProjName, achValue, ProjAllocatedTime, ProjCompTime);
         AchievId++;
+        Achievements[AchievId] = Achievement(achName, ProjName, achValue, ProjAllocatedTime, ProjCompTime);
+        emit UserAchievCreated(AchievId, ProjName, achValue);
     }
-
 
     function ReadUser(uint UId) public view returns(string memory, string memory, uint) {
         string memory Name = Users[UId].Name;
