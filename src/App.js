@@ -69,43 +69,81 @@ App = {
       App.setLoading(true)
         const accounts = await web3.eth.getAccounts()
       $('#account').html(accounts[0])
+        await App.renderUsers()
+        await App.renderUsersAchiev()
+
+
       App.setLoading(false)
     },
   
-    // renderUsers: async () => {
-    //   // Load the total task count from the blockchain
-    //   const UserCount = await App.Hiring.UserCount()
-    //   const $taskTemplate = $('.taskTemplate')
-  
-    //   // Render out each task with a new task template
-    //   for (var i = 1; i <= taskCount; i++) {
-    //     // Fetch the task data from the blockchain
-    //     const task = await App.todoList.tasks(i)
-    //     const taskId = task[0].toNumber()
-    //     const taskContent = task[1]
-    //     const taskCompleted = task[2]
-  
-    //     // Create the html for the task
-    //     const $newTaskTemplate = $taskTemplate.clone()
-    //     $newTaskTemplate.find('.content').html(taskContent)
-    //     $newTaskTemplate.find('input')
-    //                     .prop('name', taskId)
-    //                     .prop('checked', taskCompleted)
-    //                     .on('click', App.toggleCompleted)
-  
-    //     // Put the task in the correct list
-    //     if (taskCompleted) {
-    //       $('#completedTaskList').append($newTaskTemplate)
-    //     } else {
-    //       $('#taskList').append($newTaskTemplate)
-    //     }
-  
-    //     // Show the task
-    //     $newTaskTemplate.show()
-    //   }
-    // },
-    
-    // handleAdopt: function(event)
+    renderUsersAchiev: async () => {
+        const UserAchievCount = await App.hiring.AchievId()
+
+      // Render out each task with a new task template
+        for (let i = 1; i <= UserAchievCount; i++) {
+            // Fetch the task data from the blockchain
+            const Achievement = await App.hiring.Achievements(i)
+            const achName = Achievement[0]
+            const ProjName = Achievement[1]
+            const achValue = Achievement[2]
+            const ProjAllocatedTime = Achievement[3]
+            const ProjCompTime = Achievement[4]
+
+            console.log(achName, ProjName, achValue, ProjAllocatedTime, ProjCompTime)
+
+        $(document).ready(function(){
+            $("#ShowUserAchievdata").click(function(){
+                console.log(achName, ProjName, achValue, ProjAllocatedTime, ProjCompTime)
+                $("#Achievtable").append("<tr>" + ' ' + '<td>' + achName + ' ' + '<td>' + ProjName + ' ' + '<td>' + achValue + ' ' + '<td>' + ProjAllocatedTime + ' ' + '<td>'+ ProjCompTime + "</tr>");
+                document.getElementById("ShowUserAchievdata").disabled = true;
+                document.getElementById("HideUserAchievdata").disabled = false;
+            });
+        });
+
+        $(document).ready(function(){
+            $("#HideUserAchievdata").click(function(){
+                console.log("Hiding data")
+                $("td").hide()
+                document.getElementById("ShowUserAchievdata").disabled = false;
+                document.getElementById("HideUserAchievdata").disabled = true;
+            });
+        });
+      }
+    },
+
+    renderUsers: async () => {
+        const UserCount = await App.hiring.UserId()
+
+      // Render out each task with a new task template
+        for (let i = 1; i <= UserCount; i++) {
+            // Fetch the task data from the blockchain
+            const User = await App.hiring.Users(i)
+            const Name = User[0]
+            const Title = User[1]
+            const Salary = User[2]
+            // console.log(Id, Name, Title, Salary)
+
+        $(document).ready(function(){
+            $("#ShowUserdata").click(function(){
+                console.log(Name, Title, Salary)
+                $("#Usertable").append("<tr>" + ' ' + '<td>' + Name + ' ' + '<td>' + Title + ' ' + '<td>' + Salary + "</tr>");
+                document.getElementById("ShowUserdata").disabled = true;
+                document.getElementById("HideUserdata").disabled = false;
+            });
+        });
+
+        $(document).ready(function(){
+            $("#HideUserdata").click(function(){
+                console.log("Hiding data")
+                $("td").hide()
+                document.getElementById("ShowUserdata").disabled = false;
+                document.getElementById("HideUserdata").disabled = true;
+            });
+        });
+      }
+    },
+
+
     createUser: async function () {
         App.setLoading(true);
 

@@ -27,6 +27,10 @@
       main {
         margin-top: 60px;
       }
+      Usertable, Achievtable, th, td {
+          border:1px solid black;
+          text-align: center;
+      }
 
       #content {
         display: none;
@@ -50,24 +54,20 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-          <ul class="navbar-nav px-3">
-                <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
-                <small><a class="nav-link" href="#"><span id="account"></span></a></small>
-                </li>
-          </ul>
+                <small><a class="nav-link"><span id="account"></span></a></small>
+                <h1 style="font-weight: bold"> <center> Welcome to Smart Hiring </center></h1>
     </nav>
 
     <div class="container-fluid">
-    <h1> <center> Welcome to Smart Hiring </center></h1>
         <div class="row">
             <main role="main" class="col-lg-12 d-flex justify-content-center">
                 <div id="loader" class="text-center">
                     <p class="text-center">Loading...</p>
                 </div>
 
-            <div>
+
+                <h4 style="margin-left: 20px"> <b> Add employee details here</b></h4>
                 <form onsubmit="createUser()">
                     <input id="Name" type="text" class="form-control" placeholder="Add User's name...">
                     <input id="Title" type="text" class="form-control" placeholder="Add User's Designation...">
@@ -75,11 +75,11 @@
 
                     <input type="submit" id ='submit'>
                 </form>
-
                 <script>
                 document.getElementById("submit").addEventListener("click", App.createUser);
                 </script>
 
+                <h4> <b> Add employee's achievement details  </b> </h4>
                 <form onsubmit="createUserAchiev()">
                     <input id="achName" type="text" class="form-control" placeholder="Add User's achievement name...">
                     <input id="ProjName" type="text" class="form-control" placeholder="Add User's Project designation...">
@@ -89,24 +89,53 @@
 
                     <input type="submit" id ='UserAchiev'>
                 </form>
-
                 <script>
                 document.getElementById("UserAchiev").addEventListener("click", App.createUserAchiev);
                 </script>
 
 
+                <table style="width:25%" id = 'Usertable'>
+                      <tr>
+                        <th>Employee Name </th>
+                        <th>Title</th>
+                        <th>Salary</th>
+                      </tr>
+                </table> <br>
 
-                <ul id="taskList" class="list-unstyled">
-                    <div class="taskTemplate" class="checkbox" style="display: none">
-                        <label>
-                            <input type="checkbox" />
-                            <span class="content">Task content goes here...</span>
-                        </label>
+                <div class="container" style="margin-left: 10px;">
+
+                    <div class = "col-sm-1">
+                        <input type="submit" id ='ShowUserdata' value="Show User Data">
                     </div>
-                </ul>
+                    <div class = "col-sm-1" style="margin-left: 3%">
+                        <input type="submit" id ='HideUserdata' value="Hide User Data">
+                    </div>
+                </div>
 
-                <ul id="completedTaskList" class="list-unstyled"> </ul>
-            </div>
+                <br><br>
+
+                <table style="width:60%;" id = 'Achievtable' >
+                      <tr>
+                          <th> Achievement Name </th>
+                          <th> Project Name </th>
+                          <th> Achievement Value</th>
+                          <th> Project Allocated Time</th>
+                          <th> Project Completion Time </th>
+                      </tr>
+                </table> <br>
+
+
+                <div class="container" style="margin-left: 10px;">
+
+                    <div class = "col-sm-1">
+                        <input type="submit" id ='ShowUserAchievdata' value="Show Users Achievement"> <br><br>
+                    </div>
+                    <div class = "col-sm-1" style="margin-left: 8%" >
+                        <input type="submit" id ='HideUserAchievdata' value="Hide Users Achievement"> <br><br>
+                    </div>
+                </div>
+
+
             </main>
 
         </div>
