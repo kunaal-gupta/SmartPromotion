@@ -55,23 +55,16 @@
 
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-                <small><a class="nav-link"><span id="account"></span></a></small>
-                <h1 style="font-weight: bold"> <center> Welcome to Smart Hiring </center></h1>
+                <a class="nav-link" style="padding-right: 100%; font-weight: bold; margin-top: 50%; color:black; background-color: deepskyblue"><span id="account"></span></a>
+                <h1 style="font-weight: bold; color: white"> <center> Welcome to Smart Hiring </center></h1>
     </nav>
 
     <div class="container-fluid">
-        <div class="row">
-            <main role="main" class="col-lg-12 d-flex justify-content-center">
-                <div id="loader" class="text-center">
-                    <p class="text-center">Loading...</p>
-                </div>
-
-
-                <h4 style="margin-left: 20px"> <b> Add employee details here</b></h4>
+                <h4 style="margin-left: 30px"> <b> Add employee details here</b></h4>
                 <form onsubmit="createUser()">
-                    <input id="Name" type="text" class="form-control" placeholder="Add User's name...">
-                    <input id="Title" type="text" class="form-control" placeholder="Add User's Designation...">
-                    <input id="Salary" type="number" class="form-control" placeholder="Add User's Salary...">
+                    <input id="Name" type="text" class="form-control" placeholder="Employee name...">
+                    <input id="Title" type="text" class="form-control" placeholder="Employee Designation...">
+                    <input id="Salary" type="number" class="form-control" placeholder="Employee Salary...">
 
                     <input type="submit" id ='submit'>
                 </form>
@@ -81,11 +74,12 @@
 
                 <h4> <b> Add employee's achievement details  </b> </h4>
                 <form onsubmit="createUserAchiev()">
-                    <input id="achName" type="text" class="form-control" placeholder="Add User's achievement name...">
-                    <input id="ProjName" type="text" class="form-control" placeholder="Add User's Project designation...">
-                    <input id="achValue" type="number" class="form-control" placeholder="Add User's Achievement value...">
-                    <input id="ProjAllocatedTime" type="number" class="form-control" placeholder="Add User's Project allocated time...">
-                    <input id="ProjCompTime" type="number" class="form-control" placeholder="Add User's Project Completion Time...">
+                    <input id="EmployeeId" type="number" class="form-control" placeholder="Employee Id...">
+                    <input id="achName" type="text" class="form-control" placeholder="Employee achievement name...">
+                    <input id="ProjName" type="text" class="form-control" placeholder="Employee Project designation...">
+                    <input id="achValue" type="number" class="form-control" placeholder="Employee Achievement value...">
+                    <input id="ProjAllocatedTime" type="number" class="form-control" placeholder="Employee Project allocated time...">
+                    <input id="ProjCompTime" type="number" class="form-control" placeholder="Employee Project Completion Time...">
 
                     <input type="submit" id ='UserAchiev'>
                 </form>
@@ -93,45 +87,57 @@
                 document.getElementById("UserAchiev").addEventListener("click", App.createUserAchiev);
                 </script>
 
-
+                <h4 style="margin-left: 20px"> <b> Check out Employees detailse</b></h4>
                 <table style="width:25%" id = 'Usertable'>
+                    <div id = 'userdata'>
                       <tr>
-                        <th>Employee Name </th>
-                        <th>Title</th>
-                        <th>Salary</th>
+                          <th>Employee Id</th>
+                          <th>Employee Name </th>
+                          <th>Title</th>
+                          <th>Salary</th>
                       </tr>
+                    </div>
                 </table> <br>
-
-                <div class="container" style="margin-left: 10px;">
+                <div class="container" style="margin-left: 1%;">
 
                     <div class = "col-sm-1">
-                        <input type="submit" id ='ShowUserdata' value="Show User Data">
+                        <input type="submit" id ='FetchUserdata' value="Fetch User Data">
                     </div>
-                    <div class = "col-sm-1" style="margin-left: 3%">
-                        <input type="submit" id ='HideUserdata' value="Hide User Data">
+
+                    <div class = "col-sm-1" style="margin-left: 2%">
+                        <input type="submit" id ='ShowUserdata' value="Show User Data" disabled>
+                    </div>
+                    <div class = "col-sm-1" style="margin-left: 2%">
+                        <input type="submit" id ='HideUserdata' value="Hide User Data" disabled>
                     </div>
                 </div>
 
                 <br><br>
 
+                <h4 style="margin-left: 20px"> <b> Check out Employees achievement details</b></h4>
                 <table style="width:60%;" id = 'Achievtable' >
-                      <tr>
-                          <th> Achievement Name </th>
-                          <th> Project Name </th>
-                          <th> Achievement Value</th>
-                          <th> Project Allocated Time</th>
-                          <th> Project Completion Time </th>
+                    <div id = 'UserAchievdata'>
+                        <tr>
+                            <th> Employee Name </th>
+                            <th> Achievement Name </th>
+                            <th> Project Name </th>
+                            <th> Achievement Value</th>
+                            <th> Project Allocated Time</th>
+                            <th> Project Completion Time </th>
                       </tr>
+                    </div>
                 </table> <br>
-
-
                 <div class="container" style="margin-left: 10px;">
 
                     <div class = "col-sm-1">
-                        <input type="submit" id ='ShowUserAchievdata' value="Show Users Achievement"> <br><br>
+                        <input type="submit" id ='FetchUserAchievdata' value="Fetch Users Achievement"> <br><br>
                     </div>
-                    <div class = "col-sm-1" style="margin-left: 8%" >
-                        <input type="submit" id ='HideUserAchievdata' value="Hide Users Achievement"> <br><br>
+
+                    <div class = "col-sm-1" style="margin-left: 7.2%">
+                        <input type="submit" id ='ShowUserAchievdata' value="Show Users Achievement" disabled>
+                    </div>
+                    <div class = "col-sm-1" style="margin-left: 7.2%" >
+                        <input type="submit" id ='HideUserAchievdata' value="Hide Users Achievement" disabled>
                     </div>
                 </div>
 
